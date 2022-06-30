@@ -1,0 +1,25 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Lato';
+}
+
+/* Esse chama o atributo especifico
+[name=paragrafo]{
+    color: blue;
+}
+*/
+
+/*Esse chama todos os atributos que usam name para identificar*/
+[name]{
+    color:red;
+}
+
+[type=button]{
+    background-color: green;
+}
+
+[type=text]{
+    width: 25px;
+}

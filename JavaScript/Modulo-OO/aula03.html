@@ -1,0 +1,64 @@
+<html>
+    <body>
+        <script>
+            
+            function Pessoa(){
+                this.nome = 'wildemberg';
+                this.idade = 19;
+                this.printNome = function(nome){
+                    alert(this.nome+' + ' + nome);
+                };
+                this.returnAnimal = function(animal){
+                    return animal;
+                };
+            };
+
+            function Animal(){
+                this.nome = 'cachorro';
+                this.raca = 'bulldog';
+            };
+
+            var pessoa = new Pessoa();
+            var animal = new Animal();
+
+            alert(pessoa.returnAnimal(animal.raca));
+
+
+            /*
+            function Pessoa(){
+                this.nome = 'wildemberg';
+                this.idade = 19;
+                this.printNome = function(nome){
+                    alert(this.nome+' + ' + nome);
+                }
+            };
+
+            var pessoa = new Pessoa();
+            var pessoa_2 = new Pessoa();
+
+            pessoa_2.nome = 'Joao';
+
+            pessoa.printNome(pessoa_2.nome);
+
+            function Animais(nome, peso){
+                
+                if(nome == undefined){
+                    nome = 'leao';
+                }
+
+                if(peso == undefined){
+                    peso = 5; 
+                }
+                this.nome = nome;
+                this.peso = peso;   
+            };
+
+            var animais = new Animais('cachorro', 50);
+            var animais2 = new Animais();
+
+            alert(animais.nome + ' + peso: '+animais.peso);
+            alert (animais2.nome+ ' + ' + animais2.peso);
+            */
+        </script>
+    </body>
+</html>

@@ -1,0 +1,319 @@
+bibliografias: 
+JavaScript - guia do programador
+guia de referencia da mozila
+guia de acesso da ECMA
+
+OBS: O javascript é uma linguagem orientada a objetos 
+
+No arquivo html:
+
+Em head: é toda as configurações de html e css
+O css fica dentro de <style>
+
+Em body: é onde será apresentado as coisas na tela, e os scripts do JavaScript;
+O JS fica dentro de <script>
+
+=========================================================
+Comentarios:
+// unica linha
+/* mais de linha 
+*/
+
+========================================================
+Variaveis:
+
+obs: podemos usar 'var' ou 'let' ou 'const'
+OBS: const não se pode mudar o valor 
+ 
+ex: 
+var n1 = 5
+var s1 = "JavaScript"
+var s2 = 'cursoEmVideo'
+var s3 = `aula`
+
+==============================================================
+Identificadores:
+
+-podem começar com letra, $ ou _
+-Não podem começar com numeros
+-é possivel usar letras ou números
+-é possivel usar acentos e símbolos
+-não podem conter espaço
+-não podem ser palavras reservadas(comandos)
+
+===========================================================
+Variaveis primitivas:
+
+para descobrir o tipo de uma variavel: typeof
+
+-number
+    -infinity
+    -NaN
+-string
+-boolean
+-null
+-undefined
+-object
+    Array
+-function
+
+================================================================
+curiosidades sobre o '+':
+-para adição (number + number)
+-para concatenação (string + string)
+-vai precisar fazer conversão algumas vezes
+
+==============================================================
+Conversão:
+//esses vc força a conversão
+Number.parseInt(n)
+Number.parseFloat(n)
+
+//esse ele vê a melhor opção
+Number(n) (ele se vira para achar o tipo)
+=========================================================================
+-Converter para string:
+String(n)
+n.toString
+
+=======================================================================
+Formatando strings:
+use crase!
+
+`Eu estou estudando ${variavel}`
+`O aluno ${nome} de ${idade}, tirou ${nota} na prova`
+'O aluno junior de 19, tirou 5.5 na prova'
+
+OBS: para strings simples usasse asplas simples ou duplas,
+para strings que vão ter a formatação ${}, usasse a crase
+
+=============================================================================
+Formatando numeros:
+
+n1.toFixed(2) // mostra duas casas apos a virgula
+n1.toFixed(2).replace('.', ',') // ele substitui todos os pontos
+por virgula
+n1.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
+// ^ imprimi em forma de dinheiro, ex: 'R$ 1500,00'
+
+==================================================================================
+
+Operadores: 
+-aritméticos
+-atribuição
+-relacionais
+-lógicos
+-ternários
+-e muito mais!
+
+aritmeticos:
+> '+' = soma
+> '-' = subtração
+> '*' = multiplicação
+> '/' = divisão
+> '%' = resto da divisão
+> '**' = potência
+
+Atribuição:
+ n = n+1 -> n+=1
+ n = n-1 -> n-=1
+ igual para os outros
+
+Relacionais: (são operadores logicos, true ou false)
+ '>' = maior que
+ '<' = menor que
+ '>=' = maior ou igual que
+ '<=' = menor ou igual que
+ '==' = igualdade
+ '!=' = diferença
+
+Identidade: 
+
+5==5 -> true
+5=='5' -> true
+// a diferença é que só dois '==' não testa o tipo
+5==='5' -> false
+5===5 -> true
+5 !== '5' -> true
+
+Lógicos:
+
+! -> negação (true ou false)
+&& -> 'e' logico (Só satisfaz se as duas condições forem verdadeiras)
+|| -> 'ou' logico (Só necessitaq ue uma das condições seja verdadeira)
+
+ordem de excecução: ! -> && -> ||
+
+========================================================================================
+Ordem de precedencia geral:
+
+1 - operadores aritmeticos
+2 - relacionais
+3 - !
+4 - &&
+5 - ||
+6 - ternários
+
+=========================================================================================
+Operadores ternários:
+
+'teste' ? 'true':'false'
+ex: 
+media >= 5 ? 'aprovado' : 'reprovado'
+
+========================================================================================
+DOM - document object model
+
+em query selector:
+quando é div é #
+quando é classe é .
+
+voce pode selecionar elementos por 5 maneiras:
+-por marca 
+-por id
+-por nome 
+-por classe 
+-por seletor 
+
+=====================================================================================================================
+Transformar string em inteiros:
+
+num1 = parseInt(num1);
+num2 = parseInt(num2);
+
+============================================================================================
+Comentários:
+
+-> //
+-> /* ... */
+
+==============================================================================================
+Começando Orientação a Objetos:
+
+EX como funciona:
+ <script>
+            var objetos = [{
+                'nome': 'wildemberg',
+                'idade': 19,
+                'profissao': 'corno',
+            },
+            {
+                'nome': 'joao',
+                'idade': 19,
+                'profissao': 'estudante',
+            }
+            ];
+
+            var noticias = [{
+                'titulo': 'noticias1',
+                'conteudo': 'testando OO',
+            },
+            ];
+        </script>
+
+EX como criar:
+
+<script>
+            
+            function Pessoa(){
+                this.nome = 'Wildemberg';
+            }
+
+            var pessoa = new Pessoa();
+            var pessoa2 = new Pessoa();
+
+            pessoa.nome = 'Joao';
+
+            alert(pessoa.nome);
+            alert(pessoa2.nome);
+            
+
+        </script>
+
+EX mais complexo:
+
+function Pessoa(){
+                this.nome = 'wildemberg';
+                this.idade = 19;
+                this.printNome = function(nome){
+                    alert(this.nome+' + ' + nome);
+                };
+                this.returnAnimal = function(animal){
+                    return animal;
+                };
+            };
+
+            function Animal(){
+                this.nome = 'cachorro';
+                this.raca = 'bulldog';
+            };
+
+            var pessoa = new Pessoa();
+            var animal = new Animal();
+
+            alert(pessoa.returnAnimal(animal.raca));
+
+
+EX2:            
+            function Pessoa(){
+                this.nome = 'wildemberg';
+                this.idade = 19;
+                this.printNome = function(nome){
+                    alert(this.nome+' + ' + nome);
+                }
+            };
+
+            var pessoa = new Pessoa();
+            var pessoa_2 = new Pessoa();
+
+            pessoa_2.nome = 'Joao';
+
+            pessoa.printNome(pessoa_2.nome);
+
+            function Animais(nome, peso){
+                
+                if(nome == undefined){
+                    nome = 'leao';
+                }
+
+                if(peso == undefined){
+                    peso = 5; 
+                }
+                this.nome = nome;
+                this.peso = peso;   
+            };
+
+            var animais = new Animais('cachorro', 50);
+            var animais2 = new Animais();
+
+            alert(animais.nome + ' + peso: '+animais.peso);
+            alert (animais2.nome+ ' + ' + animais2.peso);
+            
+=================================================================================================================================
+EX de classes em arquivo unico:
+
+class Animal{
+    constructor(nome){
+        this.nome = nome;
+    }
+
+    printNome(){
+       return this.nome;
+    }
+
+}
+
+class Cachorro extends Animal{
+    constructor(nome){
+          super(nome);
+          this.raca = 'dog'
+    }
+
+    printRaca(){
+        return this.raca;
+    }
+}
+
+cachorro = new Cachorro('maltes');
+
+alert(cachorro.printNome()+ ' + ' +cachorro.printRaca());

@@ -1,0 +1,10 @@
+:root{
+    --corPadrao: blue;
+    --widhtPadrao: 300px;
+}
+
+div{
+    background-color: var(--corPadrao);
+    max-width: var(--widhtPadrao);
+    margin: 0 auto;
+}

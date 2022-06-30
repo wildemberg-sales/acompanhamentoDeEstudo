@@ -1,0 +1,17 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Lato';
+}
+
+.bg{
+    width: 100%;
+    height: 400px;
+    background-image: url("background.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+
+    /*Esse é importante para a imagem não ficar distorcida*/
+    background-size: cover;
+}

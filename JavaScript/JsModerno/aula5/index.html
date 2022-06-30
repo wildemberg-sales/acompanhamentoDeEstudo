@@ -1,0 +1,34 @@
+<html>
+    <body>
+        <script>
+            //Rest e spread
+
+            //spread
+            /*
+            var nomes = [
+                {
+                    nome: 'joao'
+                },
+                {
+                    nome: "jorge"
+                }
+            ]
+            const objetos = [...nomes, {
+                nome: "junior"
+            }];
+
+            console.log(objetos);
+            */
+
+
+            //rest
+
+            function testes(...nomes){
+                console.log(nomes);
+            }
+
+            testes(1,2,[3,4,5,6], {nome:"guilherme"});
+
+        </script>
+    </body>
+</html>

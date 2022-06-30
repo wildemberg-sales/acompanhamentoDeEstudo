@@ -1,0 +1,19 @@
+<html>
+<body>
+    <script>
+        var anoNascimento = prompt('informe a data do seu nascimento: ');
+        
+        while(anoNascimento>=2022){
+            alert('por favor digite um ano valido!');
+            anoNascimento = prompt('informe a data do seu nascimento: ');
+        }
+
+        var anoAtual = prompt('e qual ano atual: ');
+
+        var idade = anoAtual - anoNascimento;
+
+        alert('Sua idade é '+ idade + ' anos.');
+
+    </script>
+</body>
+</html>

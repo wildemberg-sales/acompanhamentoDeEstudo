@@ -1,0 +1,50 @@
+<html>
+    <body>
+
+        <div class="container"></div>
+
+        <script>
+
+            //primeiro, pegamos um api e fizemos uma requisição para pegar a lista de filmes com o GET
+            fetch('https://api.themoviedb.org/3/movie/popular?api_key=506fadb0256c13349acc05dabebf9604&language=en-US&page=1',{
+                method: 'GET'
+            })
+            //depois jogamos os dados para dentro do json
+            .then(response => response.json())
+            .then(function(json){
+                var container = document.querySelector('.container');
+                
+                //console.log(json);
+
+                //depois mapeamos os valores dentro da div container que esta no body
+                json.results.map(function(val){
+                    container.innerHTML+=`
+                        <div style="cursor:pointer; color: blue;" class="tituloFilme">`+val.title+`
+                            <div style="display:none; margin: 10 10; color: black;"  class="description">`+val.overview+`</div>
+                            <hr>
+                        </div> 
+                    `;
+                });
+
+                //depois recuperamos todos os titulos do filme que forem colocamos no container, e inserimos dentro 
+                //da var titulos
+                var titulos = document.querySelectorAll('.tituloFilme');
+                // depois criamos um loop para inserir um evento de click para cada um
+                for(var i=0; i<titulos.length; i++){
+                    //evento de click
+                    titulos[i].addEventListener('click',function(t){
+
+                        //atraves do t que busca o elemento, e target que é o elemto que foi clicado, criamos a opção de esconder e mostrar a descrição
+                        if(t.target.querySelector('.description').style.display == "none"){
+                            t.target.querySelector('.description').style.display = "block";
+                        }else{
+                            t.target.querySelector('.description').style.display = "none";
+                        }
+                        
+                    })
+                }
+               
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,5 @@
+*{ /*Reseta todas as configurações que podem haver no navegador*/
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}

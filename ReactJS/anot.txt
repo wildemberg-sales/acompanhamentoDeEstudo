@@ -1,0 +1,213 @@
+props:
+
+function App(props) {
+  return (
+    <div className="App">
+      <h1>{props.texto.chamada1}</h1>
+      <p>{props.texto.chamada2}</p>
+    </div>
+  );
+}
+
+    na principal:
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(
+    <React.StrictMode>
+        <App texto={{chamada1: "will", chamada2: "junior"}} />
+    </React.StrictMode>
+    );
+
+=======================================================================================================
+React Hooks:
+
+Estado:
+import './App.css';
+import Header from './Header/Header.js';
+import React, {useState, UseState} from 'react';
+
+function App(props) {
+
+  const [count, setCount] = useState(0);
+  const [nome, setNome]=useState("joao");
+  const [numeros, setNumeros] = useState([1, 2, 3]);
+  const [obj, setObj] = useState({nome:'junior', idade:19}, {nome:'will', idade:20})
+
+  return (
+    <div className="App">
+      <p>Você clicou {count} vezes</p>
+
+      <button onClick={()=>setCount(count+1)}>
+        clique aqui
+      </button>
+
+      <p>Seu nome: {nome}</p>
+      <button onClick={()=>setNome("will")}> clique</button>
+
+      {
+        numeros.map((val)=>{
+          return(
+            <p>{val}</p>
+          )
+        })
+      }
+
+    </div>
+  );
+}
+
+export default App;
+
+
+Effect:
+import React, { useState, useEffect } from 'react';
+
+export default function App() {
+  const [count, setCount] = useState(0);
+
+  // Similar ao componentDidMount e componentDidUpdate:
+  useEffect(() => {
+    // Atualiza o título do documento usando a API do browser
+    document.title = `Você clicou ${count} vezes`;
+  });
+  //caso no final do useEffect vc colocar um ',[]', vc faz ele atualizar so uma vez, ou se colocar algo dentro, vc define que ele vai atualizar so quando o componente for usado ou algo do tipo
+
+  return (
+    <div>
+      <p>Você clicou {count} vezes</p>
+      <button onClick={() => setCount(count + 1)}>
+        Clique aqui
+      </button>
+    </div>
+  );
+}
+
+
+renderização condicional:
+
+import React, { useState, useEffect } from 'react';
+
+export default function App() {
+  const [count, setCount] = useState(0);
+
+  const [nome, setNome] = useState("junior");
+
+  // Similar ao componentDidMount e componentDidUpdate:
+  useEffect(() => {
+    // Atualiza o título do documento usando a API do browser
+    document.title = `Você clicou ${count} vezes`;
+  });
+
+  return(
+    <div>
+      //renderização condicional
+      {
+        (nome=="junior")?
+          <div>
+            <p>{nome}</p>
+          </div>
+          :
+          <div>
+            <p>Nao é junior</p>
+          </div>
+      }
+    </div>
+  )
+
+  /*
+  if(nome=="junior"){
+    return (
+    <div>
+      <p>{nome}</p>
+    </div>
+    );
+  }else{
+    return(
+      <div>
+        <p>Nao é junior</p>
+      </div>
+    )
+  }
+  */
+
+}
+
+===============================================================================================
+Relogio com Date()
+import React, { useState, useEffect } from 'react';
+
+export default function App() {
+  const date = new Date();
+  const [hora, setHora] = useState(date.getHours());
+  const [min, setMin] = useState(date.getMinutes());
+  const [seg, setSeg] = useState(date.getSeconds());
+
+  
+  useEffect(()=>{
+    const interval = setInterval(()=>{
+      
+      setSeg(seg+1);
+      
+      if(seg == 59){
+        setMin(min+1);
+        setSeg(0);
+        
+        if(min == 59){
+          setHora(hora+1);
+          setMin(0);
+        } 
+      }     
+      
+    }, 1000);
+    
+    return() => clearInterval(interval);
+  });
+
+ 
+
+  return(
+    <div>
+      <h2>{hora}:{min}:{seg}</h2>
+    </div>
+  )
+}
+
+Sem Date:
+
+import React, { useState, useEffect } from 'react';
+
+export default function App() {
+
+  const [hora, setHora] = useState(21);
+  const [min, setMin] = useState(59);
+  const [seg, setSeg] = useState(50);
+
+  
+  useEffect(()=>{
+    const interval = setInterval(()=>{
+      
+      setSeg(seg+1);
+      
+      if(seg == 59){
+        setMin(min+1);
+        setSeg(0);
+        
+        if(min == 59){
+          setHora(hora+1);
+          setMin(0);
+        } 
+      }     
+      
+    }, 1000);
+    
+    return() => clearInterval(interval);
+  });
+
+ 
+
+  return(
+    <div>
+      <h2>{hora}:{min}:{seg}</h2>
+    </div>
+  )
+}

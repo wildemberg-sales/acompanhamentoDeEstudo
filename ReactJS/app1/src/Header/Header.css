@@ -1,0 +1,16 @@
+.Header{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-bottom: 2px solid blue;
+}
+
+.Header_Logo h2{
+    color:darkblue;
+}
+
+.Header_menu a{
+    margin: 0 10px;
+    color: red;
+    
+}
